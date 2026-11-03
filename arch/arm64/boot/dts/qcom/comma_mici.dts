@@ -200,7 +200,7 @@ status = "ok";
    * properties and the panel's reinit flag.
    */
   qcom,mdss-dsi-reinit-ibb-pmic = <&pmi8998_lsid1>;
-  qcom,mdss-dsi-reinit-ibb-microvolt = <3500000>;
+  qcom,mdss-dsi-reinit-ibb-microvolt = <0>;
 
   qcom,mdss-dsi-t-clk-post = <0x0e>;
   qcom,mdss-dsi-t-clk-pre = <0x31>;
