@@ -157,6 +157,7 @@ static void dsi_bridge_pre_enable(struct drm_bridge *bridge)
 		return;
 	}
 
+	pr_info("TIMING pre_enable start\n");
 	SDE_ATRACE_BEGIN("dsi_bridge_pre_enable");
 	rc = dsi_display_prepare(c_bridge->display);
 	if (rc) {
@@ -180,6 +181,7 @@ static void dsi_bridge_pre_enable(struct drm_bridge *bridge)
 	if (rc)
 		pr_err("Continuous splash pipeline cleanup failed, rc=%d\n",
 									rc);
+	pr_info("TIMING pre_enable end\n");
 }
 
 static void dsi_bridge_enable(struct drm_bridge *bridge)
@@ -200,10 +202,12 @@ static void dsi_bridge_enable(struct drm_bridge *bridge)
 	}
 	display = c_bridge->display;
 
+	pr_info("TIMING bridge_enable start\n");
 	rc = dsi_display_post_enable(display);
 	if (rc)
 		pr_err("[%d] DSI display post enabled failed, rc=%d\n",
 		       c_bridge->id, rc);
+	pr_info("TIMING bridge_enable end\n");
 
 	if (display && display->drm_conn)
 		sde_connector_helper_bridge_enable(display->drm_conn);

@@ -533,6 +533,7 @@ static void complete_commit(struct msm_commit *c)
 	struct drm_device *dev = state->dev;
 	struct msm_drm_private *priv = dev->dev_private;
 	struct msm_kms *kms = priv->kms;
+	ktime_t t0 = ktime_get(), t1, t2, t3;
 
 	drm_atomic_helper_wait_for_fences(dev, state, false);
 
@@ -542,7 +543,9 @@ static void complete_commit(struct msm_commit *c)
 
 	drm_atomic_helper_commit_planes(dev, state, 0);
 
+	t1 = ktime_get();
 	msm_atomic_helper_commit_modeset_enables(dev, state);
+	t2 = ktime_get();
 
 	/* NOTE: _wait_for_vblanks() only waits for vblank on
 	 * enabled CRTCs.  So we end up faulting when disabling
@@ -558,10 +561,15 @@ static void complete_commit(struct msm_commit *c)
 	 */
 
 	msm_atomic_wait_for_commit_done(dev, state);
+	t3 = ktime_get();
 
 	drm_atomic_helper_cleanup_planes(dev, state);
 
 	kms->funcs->complete_commit(kms, state);
+	if (ktime_ms_delta(ktime_get(), t0) > 50)
+		pr_info("TIMING commit: fences+disables+planes %lld ms, enables %lld ms, wait_for_commit_done %lld ms, cleanup+complete %lld ms\n",
+			ktime_ms_delta(t1, t0), ktime_ms_delta(t2, t1),
+			ktime_ms_delta(t3, t2), ktime_ms_delta(ktime_get(), t3));
 
 	drm_atomic_state_free(state);
 

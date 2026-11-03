@@ -3686,6 +3686,7 @@ int dsi_panel_enable(struct dsi_panel *panel)
 int dsi_panel_reinit(struct dsi_panel *panel)
 {
 	int rc, i;
+	ktime_t t0, t1, t2;
 
 	if (!panel) {
 		pr_err("Invalid params\n");
@@ -3693,6 +3694,7 @@ int dsi_panel_reinit(struct dsi_panel *panel)
 	}
 
 	mutex_lock(&panel->panel_lock);
+	t0 = ktime_get();
 
 	/*
 	 * The video stream is already running, so send in high speed, as
@@ -3703,6 +3705,7 @@ int dsi_panel_reinit(struct dsi_panel *panel)
 	if (rc)
 		pr_err("[%s] failed to send DSI_CMD_SET_OFF cmds, rc=%d\n",
 		       panel->name, rc);
+	t1 = ktime_get();
 
 	/*
 	 * Send the on commands even if the off commands failed, to wake the
@@ -3741,6 +3744,9 @@ int dsi_panel_reinit(struct dsi_panel *panel)
 		}
 	}
 
+	t2 = ktime_get();
+	pr_info("TIMING reinit: off %lld ms, on %lld ms, total %lld ms\n",
+		ktime_ms_delta(t1, t0), ktime_ms_delta(t2, t1), ktime_ms_delta(t2, t0));
 	mutex_unlock(&panel->panel_lock);
 	return rc;
 }
