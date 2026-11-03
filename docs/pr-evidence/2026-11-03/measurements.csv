@@ -1,0 +1,15 @@
+photo,state,screen,left_R,right_R,left_G,right_G,left_B,right_B
+20261103_044502.dng,panel fix and -3.5 V (review round 2 build),logo,10.47,9.24,16.2,16.78,15.02,17.45
+20261103_044511.dng,panel fix and -3.5 V (review round 2 build),logo,10.47,9.26,16.11,16.7,14.91,17.34
+20261103_044525.dng,panel fix and -3.5 V (review round 2 build),screen off,1.27,1.38,1.26,1.39,1.22,1.38
+20261103_051010.dng,panel fix and -3.5 V (review round 2 build),all-black,2.93,3.58,1.94,2.19,1.5,1.62
+20261103_051019.dng,panel fix and -3.5 V (review round 2 build),all-black,2.89,3.52,1.93,2.17,1.48,1.63
+20261103_051033.dng,panel fix and -3.5 V (review round 2 build),screen off,1.36,1.46,1.36,1.48,1.35,1.46
+20261103_051555.dng,panel fix only (test build with the voltage set to 0),logo,39.02,38.5,25.72,26.68,16.93,18.97
+20261103_051607.dng,panel fix only (test build with the voltage set to 0),all-black,35.69,36.55,12.04,12.92,3.07,3.17
+20261103_051622.dng,panel fix only (test build with the voltage set to 0),screen off,1.28,1.39,1.21,1.38,1.15,1.32
+20261103_051751.dng,stock kernel,logo,136.04,129.32,68.69,69.07,25.29,27.45
+20261103_051803.dng,stock kernel,all-black,127.02,120.72,52.78,52.6,10.53,10.55
+20261103_051818.dng,stock kernel,screen off,1.27,1.4,1.26,1.41,1.24,1.41
+20261103_052338.dng,panel fix and -3.5 V (final build),all-black,3.05,3.74,1.84,2.11,1.38,1.55
+20261103_052353.dng,panel fix and -3.5 V (final build),screen off,1.36,1.46,1.29,1.42,1.22,1.37
