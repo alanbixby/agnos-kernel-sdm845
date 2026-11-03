@@ -1,5 +1,6 @@
 """Before/after images from the 2026-11-03 camera RAW captures (S21 Ultra, Pro mode, ISO 50, 4 s, manual focus;
-same framing and the same processing for every tile; the camera saw the screen upside down, so tiles are rotated 180 degrees). Each image: the comma logo screen and an all-black screen."""
+same framing and the same processing for every tile; the camera saw the screen upside down, so tiles are rotated 180 degrees). Each image: the comma logo screen and an all-black screen.
+The -3.5 V logo shot (044502) is from an earlier sitting with the review round 2 build, framed a few pixels differently."""
 import numpy as np, rawpy
 from PIL import Image, ImageDraw, ImageFont
 
